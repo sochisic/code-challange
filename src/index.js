@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 
+import './index.css';
+
 const client = new ApolloClient({
   uri: 'https://api.github.com/graphql',
   headers: {
-    Authorization: "Bearer 6a33529a148c67bd91961f1ef35f2f130853f7d3"
+    Authorization: `Bearer ${process.env.REACT_APP_GITTOKEN}`
   }
 });
 
