@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 
 function Profile({ location, history }) {
-  const user = location.state || location.pathname.slice(1);
+  const user = location.pathname.slice(1);
 
   const goGit = () => {
     window.open(`https://github.com/${user}`);
@@ -19,28 +19,26 @@ function Profile({ location, history }) {
     <Query query={GET_USER} variables={{ user }}>
       {({ loading, error, data }) => {
         if (loading) return <div>Loading...</div>
-        if (error) return <div>Error: {error}</div>
+        if (error) return <div>Error: {error.messsage}</div>
         return (
-          <div className='flex justify-center mr-auto-l ml-auto-l mw7 mt4 items-center br4 pa4'>
-            <main className='flex flex-column br2 relative shadow-2'>
-              <div className='profile-close shadow-2' onClick={goBack} />
-              <div className='profile-image w-100 h4' style={{ backgroundImage: `url(${data.user.avatarUrl})` }} />
-              <h2 className='profile-name tc'>{data.user.name}</h2>
-              <span className='mv1 mh2'>{data.user.bio}</span>
-              <span className='mv1 mh2'>{data.user.company}</span>
-              <span className='mv1 mh2'>{data.user.location}</span>
-              <div className='flex justify-around flex-wrap mv3'>
-                <div className='profile-counters flex flex-column items-center flex-grow-1 br b--light-silver pa2'>
-                  <b className='db'>{data.user.repositories.totalCount}</b>
+          <div className='profile-container'>
+            <main className='profile-content'>
+              <div className='profile-close' onClick={goBack} />
+              <div className='profile-image' style={{ backgroundImage: `url(${data.user.avatarUrl})` }} />
+              <h2 className='profile-name'>{data.user.name}</h2>
+              <span>{data.user.bio}</span>
+              <span>{data.user.company}</span>
+              <span>{data.user.location}</span>
+              <div className='profile-counters-container'>
+                <div className='profile-counters'>
+                  <b>{data.user.repositories.totalCount}</b>
                   REPOS
                 </div>
-                <br />
-                <div className='profile-counters flex flex-column items-center flex-grow-1 br b--light-silver pa2'>
-                  <b className='db'>{data.user.gists.totalCount}</b>
+                <div className='profile-counters'>
+                  <b>{data.user.gists.totalCount}</b>
                   GISTS
                 </div>
-                <br />
-                <div className='profile-counters flex flex-column items-center flex-grow-1 pa2'>
+                <div className='profile-counters'>
                   <b>{data.user.followers.totalCount}</b>
                   FOLLOWERS
                 </div>

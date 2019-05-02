@@ -14,9 +14,9 @@ function Item(props) {
         if (error) return <li className='main-item' >{error.message}</li>
 
         return (
-          <li className={`main-item ${isActive ? 'selected' : ''} flex flex-row`} onClick={onClick} {...getItemProps}>
+          <li className={`main-item ${isActive ? 'selected' : ''}`} onClick={onClick} {...getItemProps}>
             <img height='50px' width='50px' src={data.user.avatarUrl} alt='User Avatar Logo' />
-            <div className='flex flex-column justify-around ml3'>
+            <div>
               <span>{data.user.name}</span>
               <i>{data.user.company}</i>
             </div>

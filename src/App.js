@@ -6,6 +6,7 @@ import { createBrowserHistory } from 'history';
 
 //main styles
 import './styles.css';
+
 const history = createBrowserHistory();
 
 function App() {
