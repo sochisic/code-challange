@@ -1,6 +1,6 @@
-img {
+/* img {
   border-radius: 50%;
-}
+} */
 
 main {
   width: 350px;
@@ -22,8 +22,7 @@ main {
 
 .main-container span {
   text-align: center;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  line-height: 2rem;
 }
 
 .main-container>div {
@@ -94,6 +93,7 @@ main {
 
 .main-item {
   display: flex;
+  align-items: center;
   position: relative;
   cursor: pointer;
   border: none;

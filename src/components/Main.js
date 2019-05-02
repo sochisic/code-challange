@@ -6,7 +6,6 @@ import Item from './Item';
 import { SEARCH_USERS } from '../dal/gql-queries';
 
 function Main({ history }) {
-
   return (
     <Downshift
       defaultHighlightedIndex={0}
@@ -31,8 +30,8 @@ function Main({ history }) {
                 {isOpen && (
                   <Query query={SEARCH_USERS} variables={{ inputValue }}>
                     {({ loading, error, data: { search = {} } = {} }) => {
-                      if (loading) return <li className='error'>Loading...</li>
-                      if (error) return `Error! ${error.message}`
+                      if (loading) return <li className='error'>Loading...</li>;
+                      if (error) return `Error! ${error.message}`;
 
                       const filteredOnlyLogin = search.edges.length > 0 ? search.edges.filter(it => {
                         const loginMatches = it.textMatches.find(match => match.property === 'login');
